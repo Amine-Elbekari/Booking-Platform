@@ -11,6 +11,7 @@ class User(Base):
     last_name = Column(String(100), nullable=False)
     # index=true makes searching by email fast
     email = Column(String(255), unique=True, nullable=False, index=True)
+    hashed_password = Column(String(255), nullable=False)
     phone_number = Column(String(255), nullable=False)
     date_of_birth = Column(Date, nullable=False)
     gender = Column(String(20), nullable=False)

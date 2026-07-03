@@ -1,4 +1,4 @@
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, Field
 from datetime import date, datetime
 from uuid import UUID
 from decimal import Decimal
@@ -6,6 +6,9 @@ from decimal import Decimal
 class BookingBase(BaseModel):
     start_date: date
     end_date: date
+    adult_count: int = Field(default=1, ge=1)
+    child_count: int = Field(default=0, ge=0)
+    baby_count: int = Field(default=0, ge=0)
 
 class BookingCreate(BookingBase):
     asset_id: UUID

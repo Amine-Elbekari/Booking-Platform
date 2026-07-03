@@ -4,6 +4,7 @@ from sqlalchemy.future import select
 from database import get_db
 from models.user import User
 from schemas.user import UserCreate, UserResponse
+from security import get_password_hash
 from uuid import UUID
 
 # all routes here start with /users that's way i put prefix="/users"
@@ -24,8 +25,11 @@ async def create_user(user: UserCreate, db: AsyncSession = Depends(get_db)):
     
     # convert the Pydantic JSON into a SQLALcheny Model
     # here .model_dump() unpacks the dictionary automatically
-    new_user = User(**user.model_dump())
+    user_dict = user.model_dump()
+    hashed_pass = get_password_hash(user_dict.pop("password"))
+    user_dict["hashed_password"] = hashed_pass
     
+    new_user = User(**user_dict)
     db.add(new_user)
     await db.commit()
     await db.refresh(new_user)

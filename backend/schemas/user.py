@@ -21,7 +21,7 @@ class UserBase(BaseModel):
 
 # Create Model (Incoming from Vite/React)
 class UserCreate(UserBase):
-    pass
+    password: str = Field(..., min_length=8, description="Must be at least 8 characters")
 
 # The Response Model (Outgoing to Vite/React)
 class UserResponse(UserBase):
