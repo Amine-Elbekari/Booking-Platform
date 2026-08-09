@@ -12,9 +12,9 @@ class User(Base):
     # index=true makes searching by email fast
     email = Column(String(255), unique=True, nullable=False, index=True)
     hashed_password = Column(String(255), nullable=False)
-    phone_number = Column(String(255), nullable=False)
-    date_of_birth = Column(Date, nullable=False)
-    gender = Column(String(20), nullable=False)
+    phone_number = Column(String(255), nullable=True)
+    date_of_birth = Column(Date, nullable=True)
+    gender = Column(String(20), nullable=True)
     address = Column(String(255))
     country = Column(String(100))
     city = Column(String(100))

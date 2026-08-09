@@ -1,12 +1,13 @@
 # Manage the connection pool to the database
 import os
+import redis.asyncio as aioredis
 from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker
 from sqlalchemy.orm import declarative_base
 
 # Build the connection URL
 # the host here is name service from docker-compose
 DATABASE_URL = os.getenv("DATABASE_URL")
-
+REDIS_URL = os.getenv("REDIS_URL")
 # Create the Async engine
 # this is the actula engine that talks to postgres
 # i put echo=True for debugging so all the,
@@ -40,3 +41,10 @@ Base = declarative_base()
 async def get_db():
     async with AsyncSessionLocal() as session:
         yield session
+
+async def get_redis():
+    client = aioredis.from_url(REDIS_URL, encoding="utf-8", decode_response=True)
+    try:
+        yield client
+    finally:
+        await client.aclose()

@@ -1,0 +1,429 @@
+{
+  "communities": {
+    "0": [
+      "backend_database",
+      "backend_database_get_db",
+      "backend_dependencies",
+      "backend_dependencies_get_current_user",
+      "backend_dependencies_py_asyncsession",
+      "backend_main",
+      "backend_models_user",
+      "backend_models_user_py_base",
+      "backend_models_user_user",
+      "backend_routers_auth",
+      "backend_routers_auth_get_current_user",
+      "backend_routers_auth_google_login",
+      "backend_routers_auth_login",
+      "backend_routers_auth_py_asyncsession",
+      "backend_routers_auth_py_post",
+      "backend_routers_bookings",
+      "backend_routers_users",
+      "backend_routers_users_complete_profile",
+      "backend_routers_users_create_user",
+      "backend_routers_users_get_user",
+      "backend_routers_users_profilecompleteschema",
+      "backend_routers_users_py_asyncsession",
+      "backend_routers_users_py_basemodel",
+      "backend_routers_users_py_get",
+      "backend_routers_users_py_post",
+      "backend_security",
+      "backend_security_create_access_token",
+      "backend_security_get_password_hash",
+      "backend_security_rationale_14",
+      "backend_security_rationale_18",
+      "backend_security_rationale_22",
+      "backend_security_verify_password",
+      "backend_tests_test_db",
+      "backend_tests_test_db_fill_user_table",
+      "oauth2passwordrequestform",
+      "patch"
+    ],
+    "1": [
+      "autoprefixer",
+      "eslint",
+      "eslint_js",
+      "eslint_plugin_react_hooks",
+      "eslint_plugin_react_refresh",
+      "frontend_package_devdependencies",
+      "frontend_package_devdependencies_autoprefixer",
+      "frontend_package_devdependencies_eslint",
+      "frontend_package_devdependencies_eslint_js",
+      "frontend_package_devdependencies_eslint_plugin_react_hooks",
+      "frontend_package_devdependencies_eslint_plugin_react_refresh",
+      "frontend_package_devdependencies_globals",
+      "frontend_package_devdependencies_postcss",
+      "frontend_package_devdependencies_tailwindcss",
+      "frontend_package_devdependencies_types_country_list",
+      "frontend_package_devdependencies_types_node",
+      "frontend_package_devdependencies_types_react",
+      "frontend_package_devdependencies_types_react_dom",
+      "frontend_package_devdependencies_typescript",
+      "frontend_package_devdependencies_typescript_eslint",
+      "frontend_package_devdependencies_vite",
+      "frontend_package_devdependencies_vitejs_plugin_react",
+      "globals",
+      "postcss",
+      "tailwindcss",
+      "types_country_list",
+      "types_node",
+      "types_react",
+      "types_react_dom",
+      "typescript",
+      "typescript_eslint",
+      "vite",
+      "vitejs_plugin_react"
+    ],
+    "2": [
+      "frontend_tsconfig_app",
+      "frontend_tsconfig_app_compileroptions",
+      "frontend_tsconfig_app_compileroptions_allowimportingtsextensions",
+      "frontend_tsconfig_app_compileroptions_erasablesyntaxonly",
+      "frontend_tsconfig_app_compileroptions_jsx",
+      "frontend_tsconfig_app_compileroptions_lib",
+      "frontend_tsconfig_app_compileroptions_module",
+      "frontend_tsconfig_app_compileroptions_moduledetection",
+      "frontend_tsconfig_app_compileroptions_moduleresolution",
+      "frontend_tsconfig_app_compileroptions_noemit",
+      "frontend_tsconfig_app_compileroptions_nofallthroughcasesinswitch",
+      "frontend_tsconfig_app_compileroptions_nounusedlocals",
+      "frontend_tsconfig_app_compileroptions_nounusedparameters",
+      "frontend_tsconfig_app_compileroptions_skiplibcheck",
+      "frontend_tsconfig_app_compileroptions_target",
+      "frontend_tsconfig_app_compileroptions_tsbuildinfofile",
+      "frontend_tsconfig_app_compileroptions_types",
+      "frontend_tsconfig_app_compileroptions_verbatimmodulesyntax",
+      "frontend_tsconfig_app_include",
+      "frontend_tsconfig_app_json_ref_es2023",
+      "ref_dom",
+      "ref_src",
+      "ref_vite_client"
+    ],
+    "3": [
+      "frontend_src_api_authservice",
+      "frontend_src_api_authservice_authservice",
+      "frontend_src_api_authservice_completeprofiledata",
+      "frontend_src_api_authservice_loginresponse",
+      "frontend_src_api_authservice_registerdata",
+      "frontend_src_api_client",
+      "frontend_src_api_client_apiclient",
+      "frontend_src_app",
+      "frontend_src_app_app",
+      "frontend_src_app_dashboard",
+      "frontend_src_app_home",
+      "frontend_src_app_landingpage",
+      "frontend_src_main",
+      "frontend_src_pages_completeprofile",
+      "frontend_src_pages_completeprofile_completeprofile",
+      "frontend_src_pages_completeprofile_countries",
+      "frontend_src_pages_login",
+      "frontend_src_pages_login_login",
+      "frontend_src_pages_register",
+      "frontend_src_pages_register_register"
+    ],
+    "4": [
+      "frontend_tsconfig_node",
+      "frontend_tsconfig_node_compileroptions",
+      "frontend_tsconfig_node_compileroptions_allowimportingtsextensions",
+      "frontend_tsconfig_node_compileroptions_erasablesyntaxonly",
+      "frontend_tsconfig_node_compileroptions_lib",
+      "frontend_tsconfig_node_compileroptions_module",
+      "frontend_tsconfig_node_compileroptions_moduledetection",
+      "frontend_tsconfig_node_compileroptions_noemit",
+      "frontend_tsconfig_node_compileroptions_nofallthroughcasesinswitch",
+      "frontend_tsconfig_node_compileroptions_nounusedlocals",
+      "frontend_tsconfig_node_compileroptions_nounusedparameters",
+      "frontend_tsconfig_node_compileroptions_skiplibcheck",
+      "frontend_tsconfig_node_compileroptions_target",
+      "frontend_tsconfig_node_compileroptions_tsbuildinfofile",
+      "frontend_tsconfig_node_compileroptions_types",
+      "frontend_tsconfig_node_compileroptions_verbatimmodulesyntax",
+      "frontend_tsconfig_node_include",
+      "frontend_tsconfig_node_json_ref_es2023",
+      "ref_node",
+      "ref_vite_config_ts"
+    ],
+    "5": [
+      "backend_schemas_booking_guest",
+      "backend_schemas_booking_guest_bookingguestbase",
+      "backend_schemas_booking_guest_bookingguestcreate",
+      "backend_schemas_booking_guest_bookingguestresponse",
+      "backend_schemas_booking_guest_py_basemodel",
+      "backend_schemas_user",
+      "backend_schemas_user_py_basemodel",
+      "backend_schemas_user_userbase",
+      "backend_schemas_user_usercreate",
+      "backend_schemas_user_userresponse",
+      "backend_tests_test_api",
+      "backend_tests_test_api_rationale_30",
+      "backend_tests_test_api_test_full_user_and_booking_lifecycle",
+      "backend_tests_test_bookings",
+      "backend_tests_test_bookings_test_booking_engine",
+      "backend_tests_test_security",
+      "backend_tests_test_security_test_security_flow",
+      "uuid"
+    ],
+    "6": [
+      "axios",
+      "country_list",
+      "frontend_package_dependencies",
+      "frontend_package_dependencies_axios",
+      "frontend_package_dependencies_country_list",
+      "frontend_package_dependencies_react",
+      "frontend_package_dependencies_react_dom",
+      "frontend_package_dependencies_react_hot_toast",
+      "frontend_package_dependencies_react_oauth_google",
+      "frontend_package_dependencies_react_router_dom",
+      "frontend_package_dependencies_tailwindcss_vite",
+      "react",
+      "react_dom",
+      "react_hot_toast",
+      "react_oauth_google",
+      "react_router_dom",
+      "tailwindcss_vite"
+    ],
+    "7": [
+      "backend_models_asset",
+      "backend_models_asset_asset",
+      "backend_models_asset_py_base",
+      "backend_routers_assets",
+      "backend_routers_assets_create_asset",
+      "backend_routers_assets_get_all_assets",
+      "backend_routers_assets_py_asyncsession",
+      "backend_routers_assets_py_get",
+      "backend_routers_assets_py_post",
+      "backend_schemas_asset",
+      "backend_schemas_asset_assetbase",
+      "backend_schemas_asset_assetcreate",
+      "backend_schemas_asset_assetresponse",
+      "backend_schemas_asset_py_basemodel"
+    ],
+    "8": [
+      "frontend_package",
+      "frontend_package_name",
+      "frontend_package_private",
+      "frontend_package_scripts",
+      "frontend_package_scripts_build",
+      "frontend_package_scripts_dev",
+      "frontend_package_scripts_lint",
+      "frontend_package_scripts_preview",
+      "frontend_package_type",
+      "frontend_package_version"
+    ],
+    "9": [
+      "backend_requirements",
+      "docker_compose_api",
+      "docker_compose_db",
+      "docker_compose_frontend",
+      "docker_compose_gatekeeper",
+      "docker_compose_redis",
+      "frontend_readme",
+      "frontend_src_assets_react_svg",
+      "frontend_src_assets_vite_svg"
+    ],
+    "10": [
+      "backend_routers_bookings_create_booking",
+      "backend_routers_bookings_py_asyncsession",
+      "backend_routers_bookings_py_post",
+      "backend_schemas_booking",
+      "backend_schemas_booking_bookingbase",
+      "backend_schemas_booking_bookingcreate",
+      "backend_schemas_booking_bookingresponse",
+      "backend_schemas_booking_py_basemodel"
+    ],
+    "11": [
+      "database_init",
+      "database_init_assets",
+      "database_init_booking_guests",
+      "database_init_bookings",
+      "database_init_users"
+    ],
+    "12": [
+      "frontend_tsconfig",
+      "frontend_tsconfig_files",
+      "frontend_tsconfig_references"
+    ],
+    "13": [
+      "backend_tests_test_assets",
+      "backend_tests_test_assets_populate_assets"
+    ],
+    "14": [
+      "frontend_index",
+      "frontend_src_assets_hero"
+    ],
+    "15": [
+      "backend_requirements_dev"
+    ],
+    "16": [
+      "frontend_eslint_config"
+    ],
+    "17": [
+      "frontend_vite_config"
+    ]
+  },
+  "cohesion": {
+    "0": 0.11746031746031746,
+    "1": 0.06060606060606061,
+    "2": 0.08695652173913043,
+    "3": 0.15789473684210525,
+    "4": 0.1,
+    "5": 0.13725490196078433,
+    "6": 0.11764705882352941,
+    "7": 0.23076923076923078,
+    "8": 0.2,
+    "9": 0.2222222222222222,
+    "10": 0.32142857142857145,
+    "11": 0.7,
+    "12": 0.6666666666666666,
+    "13": 1.0,
+    "14": 1.0,
+    "15": 1.0,
+    "16": 1.0,
+    "17": 1.0
+  },
+  "gods": [
+    {
+      "id": "frontend_tsconfig_app_compileroptions",
+      "label": "compilerOptions",
+      "degree": 17
+    },
+    {
+      "id": "frontend_tsconfig_node_compileroptions",
+      "label": "compilerOptions",
+      "degree": 15
+    },
+    {
+      "id": "backend_models_user_user",
+      "label": "User",
+      "degree": 13
+    },
+    {
+      "id": "backend_database_get_db",
+      "label": "get_db()",
+      "degree": 7
+    },
+    {
+      "id": "backend_routers_auth_login",
+      "label": "login()",
+      "degree": 6
+    },
+    {
+      "id": "backend_routers_users_create_user",
+      "label": "create_user()",
+      "degree": 6
+    },
+    {
+      "id": "backend_routers_assets_create_asset",
+      "label": "create_asset()",
+      "degree": 5
+    },
+    {
+      "id": "backend_routers_auth_google_login",
+      "label": "google_login()",
+      "degree": 5
+    },
+    {
+      "id": "backend_routers_bookings_create_booking",
+      "label": "create_booking()",
+      "degree": 5
+    },
+    {
+      "id": "backend_routers_users_complete_profile",
+      "label": "complete_profile()",
+      "degree": 5
+    }
+  ],
+  "surprises": [
+    {
+      "source": "API (Backend)",
+      "target": "Backend Dependencies",
+      "source_files": [
+        "docker-compose.yml",
+        "backend/requirements.txt"
+      ],
+      "confidence": "INFERRED",
+      "relation": "references",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories"
+    },
+    {
+      "source": "Frontend",
+      "target": "Frontend Documentation",
+      "source_files": [
+        "docker-compose.yml",
+        "frontend/README.md"
+      ],
+      "confidence": "INFERRED",
+      "relation": "references",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories"
+    },
+    {
+      "source": "Frontend Entry Point",
+      "target": "Hero Image",
+      "source_files": [
+        "frontend/index.html",
+        "frontend/src/assets/hero.png"
+      ],
+      "confidence": "INFERRED",
+      "relation": "references",
+      "why": "inferred connection - not explicitly stated in source; crosses file types (doc ↔ image)"
+    },
+    {
+      "source": "Frontend Documentation",
+      "target": "React Logo",
+      "source_files": [
+        "frontend/README.md",
+        "frontend/src/assets/react.svg"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "references",
+      "why": "crosses file types (doc ↔ image)"
+    },
+    {
+      "source": "Frontend Documentation",
+      "target": "Vite Logo",
+      "source_files": [
+        "frontend/README.md",
+        "frontend/src/assets/vite.svg"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "references",
+      "why": "crosses file types (doc ↔ image)"
+    }
+  ],
+  "questions": [
+    {
+      "type": "bridge_node",
+      "question": "Why does `devDependencies` connect `Frontend Development Tools` to `package.json`?",
+      "why": "High betweenness centrality (0.055) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `dependencies` connect `dependencies` to `package.json`?",
+      "why": "High betweenness centrality (0.033) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `User` connect `User Authentication and Management` to `create_booking`?",
+      "why": "High betweenness centrality (0.017) - this node is a cross-community bridge."
+    },
+    {
+      "type": "isolated_nodes",
+      "question": "What connects `name`, `private`, `version` to the rest of the system?",
+      "why": "78 weakly-connected nodes found - possible documentation gaps or missing edges."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `User Authentication and Management` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.11746031746031746 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `Frontend Development Tools` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.06060606060606061 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `TypeScript App Configuration` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.08695652173913043 - nodes in this community are weakly interconnected."
+    }
+  ]
+}

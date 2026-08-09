@@ -20,7 +20,7 @@ else:
     app = FastAPI(title="Rental Architecture API", root_path="/api")
     app.add_middleware(
         CORSMiddleware,
-        allow_origin=['*'], # don't forget to change it in production
+        allow_origins=['*'], # don't forget to change it in production
         allow_credentials=True,
         allow_methods=["*"],
         allow_headers=["*"],
