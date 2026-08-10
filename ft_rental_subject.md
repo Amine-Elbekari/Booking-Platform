@@ -424,3 +424,22 @@ During your defense, you must be prepared to explain:
 - The precise difference between the Redis lock and the Postgres `FOR UPDATE` lock — what each one prevents, and why both are needed
 - What `SET NX EX 60` does at the Redis level, including why atomicity of the NX check matters
 - Why Redis's key expiration is structurally different from implementing an `expires_at` column in Postgres
+
+---
+
+## Additional Project — "Chat-with-your-Data" Dashboard (RAG)
+
+**What it is:** An application that lets users upload complex documents (PDFs, CSVs, or connect a Notion/Google Drive account) and ask questions about them.
+
+**Why it hooks recruiters:** Retrieval-Augmented Generation (RAG) is the most common enterprise use case for LLMs. Showing you can chunk data, embed it, store it in a vector database, and retrieve it accurately proves you can solve real business problems.
+
+**Tech Stack** (integrated as a feature inside an existing application — no standalone frontend):
+
+- **RAG Service:** Python (FastAPI) — either as an internal microservice called by the host application's backend, or as routes/modules added directly into the host app if it's already Python-based
+- **Frontend:** none separate — the chat-with-your-data UI is built as new views/components inside the existing application's frontend, calling the RAG service's endpoints
+- **Vector Database:** ChromaDB — self-hosted and free, no vendor account or billing dependency
+- **Embeddings:** OpenAI `text-embedding-3-small` — cheap, fast, strong retrieval quality; upgrade to `text-embedding-3-large` only if recall quality becomes the bottleneck
+- **Orchestration:** LangChain (or LlamaIndex) for chunking, retrieval, and prompt assembly
+- **Relational DB:** PostgreSQL — stores document metadata, chunk-to-source mapping, and user/session data (reuse the host application's existing database if it's already Postgres, rather than standing up a second one)
+- **File Storage:** S3 (or S3-compatible, e.g. Cloudflare R2) for the original uploaded files, referenced by signed URL — never store raw documents in the vector DB itself
+- **Auth:** reuse the host application's existing authentication — the RAG service should trust the host app's session/JWT rather than implementing its own, so document access stays scoped per user without a second login system
