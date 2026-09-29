@@ -26,39 +26,37 @@ export interface CompleteProfileData {
 }
 
 export const authService = {
-    
+
     login: async (email: string, password: string): Promise<LoginResponse> => {
         const formData = new URLSearchParams();
         formData.append("username", email);
         formData.append("password", password);
-
         const response = await apiClient.post<LoginResponse>("/auth/login", formData, {
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
         });
-
         return response.data;
     },
 
     register: async (userData: RegisterData) => {
-    // We send JSON here, just like you did in your Pytest tests!
-    const response = await apiClient.post("/users", userData);
-    return response.data;
-  },
+        // Send only the required fields; CompleteProfile handles the rest
+        const response = await apiClient.post("/users", {
+            first_name: userData.first_name,
+            last_name:  userData.last_name,
+            email:      userData.email,
+            password:   userData.password,
+        });
+        return response.data;
+    },
 
-  googleLogin: async (googleToken: string): Promise<LoginResponse> => {
-    const response = await apiClient.post<LoginResponse>("/auth/google", {
-        token: googleToken
-    });
-    return response.data
-  },
+    googleLogin: async (googleToken: string): Promise<LoginResponse> => {
+        const response = await apiClient.post<LoginResponse>("/auth/google", { token: googleToken });
+        return response.data;
+    },
 
-  completeProfile: async (data: CompleteProfileData) => {
-    const response = await apiClient.patch("/users/me/complete-profile",
-        data,
-        {
-            headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
-        }
-    );
-    return response.data;
-  }
+    completeProfile: async (data: CompleteProfileData) => {
+        const response = await apiClient.patch("/users/me/complete-profile", data, {
+            headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+        });
+        return response.data;
+    },
 };

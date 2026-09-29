@@ -43,7 +43,7 @@ async def get_db():
         yield session
 
 async def get_redis():
-    client = aioredis.from_url(REDIS_URL, encoding="utf-8", decode_response=True)
+    client = aioredis.from_url(REDIS_URL, encoding="utf-8", decode_responses=True)
     try:
         yield client
     finally:

@@ -13,5 +13,15 @@ passlib[bcrypt]==1.7.4
 bcrypt==4.2.1
 python-multipart==0.0.29
 google-auth==2.55.1
-requests==2.34.2
 redis==5.0.4
+
+#RAG Dependencies
+
+chromadb
+langchain
+langchain-chroma
+langchain-text-splitters
+sentence-transformers
+google-genai
+PyMuPDF
+pandas

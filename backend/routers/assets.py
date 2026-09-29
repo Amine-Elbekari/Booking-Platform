@@ -5,8 +5,10 @@ from sqlalchemy import text # for row SQL
 from typing import List
 from datetime import date
 from uuid import UUID
+import json
 
-from database import get_db
+from database import get_db, get_redis
+from redis.asyncio import Redis
 from models.asset import Asset
 from schemas.asset import AssetCreate, AssetResponse, AssetAvailabilityResponse
 
@@ -36,10 +38,18 @@ async def get_all_assets(db: AsyncSession = Depends(get_db)):
 
 
 @router.get("/{asset_id}/availability", response_model=AssetAvailabilityResponse, status_code=status.HTTP_200_OK)
-async def check_asset_availability(asset_id: UUID, start: date, end: date, db: AsyncSession = Depends(get_db)):
+async def check_asset_availability(asset_id: UUID, start: date, end: date, db: AsyncSession = Depends(get_db), redis: Redis = Depends(get_redis)):
     # validate if that dates make sense
     if start >= end:
         raise HTTPException(status_code=400, detail="Start date must be before end date")
+
+    cache_key = f"cache:availability:{asset_id}:{start}:{end}"
+    cached_result = await redis.get(cache_key)
+    if cached_result is not None:
+        return AssetAvailabilityResponse(
+            asset_id=asset_id,
+            available=(cached_result == "true")
+        )
 
     # raw SQL query using the && overlap operator
     # EXISTS return True if there is an overlapping booking.
@@ -60,8 +70,12 @@ async def check_asset_availability(asset_id: UUID, start: date, end: date, db: A
 
     # The asset is available if there is NO overlap
     is_overlapping = result.scalar()
+    is_available = not is_overlapping
+    
+    # Cache the result for 30 seconds
+    await redis.set(cache_key, "true" if is_available else "false", ex=30)
 
     return AssetAvailabilityResponse(
         asset_id=asset_id,
-        available=not is_overlapping
+        available=is_available
     )

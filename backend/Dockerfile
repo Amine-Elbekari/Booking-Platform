@@ -10,6 +10,11 @@ WORKDIR /app
 # copy only the requirements file first to optimize the docker's caching system (OverlayFS)
 COPY requirements.txt .
 
+# Install CPU-only PyTorch first.
+# This prevents pip from pulling the CUDA/NVIDIA PyTorch dependencies.
+RUN pip install --no-cache-dir \
+    torch --index-url https://download.pytorch.org/whl/cpu
+
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY requirements-dev.txt .

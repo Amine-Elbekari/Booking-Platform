@@ -4,7 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import text
 from database import get_db
-from routers import users, assets, bookings, auth
+from routers import users, assets, bookings, auth, rag
 
 ENV = os.getenv("ENVIRONMENT", "production")
 
@@ -43,3 +43,4 @@ app.include_router(users.router)
 app.include_router(assets.router)
 app.include_router(bookings.router)
 app.include_router(auth.router)
+app.include_router(rag.router)

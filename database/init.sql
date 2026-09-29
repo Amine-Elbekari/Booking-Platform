@@ -47,7 +47,7 @@ CREATE TABLE bookings (
     -- Status enforcement , so it will never be empty to track
     -- the current state of a reservation
 
-    status VARCHAR(20) NOT NULL DEFAULT 'pending',
+    status VARCHAR(20) NOT NULL DEFAULT 'pending_payment',
 
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
 
@@ -56,7 +56,7 @@ CREATE TABLE bookings (
     -- Note : CHECK can not be used for other tables
     CONSTRAINT valid_guest_count CHECK (adult_count + child_count >= 1),
 
-    CONSTRAINT valid_status CHECK (status IN ('pending', 'confirmed', 'cancelled', 'completed')),
+    CONSTRAINT valid_status CHECK (status IN ('pending_payment', 'confirmed', 'cancelled', 'completed', 'expired')),
 
     -- The GiST Exclusion Constraint
     -- Exclude any new row where the asset_id is qual to an existing row,
@@ -85,3 +85,16 @@ CREATE TABLE booking_guests (
 
 CREATE INDEX idx_bookings_users ON bookings(user_id);
 CREATE INDEX idx_bookings_guests_booking ON booking_guests(booking_id);
+CREATE INDEX idx_bookings_availability ON bookings USING gist (asset_id, booking_dates);
+
+-- Documents TABLE for RAG
+CREATE TABLE documents (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    user_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    filename VARCHAR(255) NOT NULL,
+    status VARCHAR(20) NOT NULL DEFAULT 'UPLOADED',
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT valid_document_status CHECK (status IN ('UPLOADED', 'EXTRACTING', 'CHUNKING', 'EMBEDDING', 'READY', 'FAILED'))
+);
+
+CREATE INDEX idx_documents_users ON documents(user_id);

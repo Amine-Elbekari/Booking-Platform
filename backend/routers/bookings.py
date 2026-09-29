@@ -35,9 +35,9 @@ async def create_booking(booking: BookingCreate, db: AsyncSession = Depends(get_
         # clean up stale rows using the schema's pending and cancelled
         cleanup_query = text("""
             UPDATE bookings
-            SET status = 'cancelled'
+            SET status = 'expired'
             WHERE asset_id = :asset_id
-                AND status = 'pending'
+                AND status = 'pending_payment'
                 AND created_at < NOW() - INTERVAL '60 seconds'
         """)
         await db.execute(cleanup_query, {'asset_id': str(booking.asset_id)})
@@ -46,7 +46,7 @@ async def create_booking(booking: BookingCreate, db: AsyncSession = Depends(get_
         overlap_query = text("""
             SELECT id FROM bookings WHERE asset_id = :asset_id
                 AND booking_dates && daterange(:start_date, :end_date, '[)')
-                AND status IN ('confirmed', 'pending')
+                AND status IN ('confirmed', 'pending_payment')
             FOR UPDATE
         """)
         overlap_result = await db.execute(overlap_query, {
@@ -85,7 +85,7 @@ async def create_booking(booking: BookingCreate, db: AsyncSession = Depends(get_
             )
             VALUES (
                 :user_id, :asset_id, daterange(:start_date, :end_date, '[)'), :total_price,
-                :adult_count, :child_count, :baby_count, 'pending'
+                :adult_count, :child_count, :baby_count, 'pending_payment'
             )
             RETURNING id, created_at
         """)
@@ -102,8 +102,9 @@ async def create_booking(booking: BookingCreate, db: AsyncSession = Depends(get_
         })
 
         new_booking = booking_result.fetchone()
-
         await db.commit()
+        # explicitly delete lock upon success
+        await redis.delete(lock_key)
 
         return {
             "id": new_booking[0],
@@ -115,7 +116,7 @@ async def create_booking(booking: BookingCreate, db: AsyncSession = Depends(get_
             "child_count": booking.child_count,
             "baby_count": booking.baby_count,
             "total_price": total_price,
-            "status": "pending",
+            "status": "pending_payment",
             "created_at": new_booking[1]
         }
     
@@ -133,7 +134,9 @@ async def create_booking(booking: BookingCreate, db: AsyncSession = Depends(get_
             
     except HTTPException:
         await db.rollback()
+        await redis.delete(lock_key)
         raise
     except Exception as e:
         await db.rollback()
+        await redis.delete(lock_key)
         raise HTTPException(status_code=500, detail=f"Server error: {str(e)}")

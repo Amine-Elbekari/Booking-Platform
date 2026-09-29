@@ -25,6 +25,9 @@ all_dev:
 	$(MAKE) build
 	$(MAKE) up
 
+concurrency-test:
+	docker compose -f $(COMPOSE_FILE) exec api python scripts/concurrency_test.py
+
 prune:
 	# Clean the unused Docker data to save disk space
 	docker system prune -af
